@@ -27,9 +27,9 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          # L'account FTP va creato in SiteGround con cartella "public_html",
-          # così "./" corrisponde già alla root del sito.
-          server-dir: ./
+          # L'account FTP su SiteGround ha Percorso Home "/" (radice hosting):
+          # la root del sito servita dal dominio è questa sottocartella.
+          server-dir: ./mavimakeup.it/public_html/
           # Carica solo i file del sito, non quelli di sviluppo
           exclude: |
             **/.git*
