@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap per il go-live: gli URL riflettono la struttura finale
+     (home.html rinominata in index.html, coming soon rimossa). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mavimakeup.it/</loc></url>
+  <url><loc>https://mavimakeup.it/portfolio.html</loc></url>
+  <url><loc>https://mavimakeup.it/servizi.html</loc></url>
+  <url><loc>https://mavimakeup.it/faq.html</loc></url>
+  <url><loc>https://mavimakeup.it/chi-sono.html</loc></url>
+  <url><loc>https://mavimakeup.it/contatti.html</loc></url>
+</urlset>

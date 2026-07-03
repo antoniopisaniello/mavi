@@ -6,10 +6,17 @@
   <title>Portfolio — Mavi · Make Up Artist</title>
   <meta name="description" content="Il portfolio di Mavi Make Up Artist: trucco sposa, cerimonia ed eventi.">
   <script src="js/gate.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#faf7f2">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mavi · Make Up Artist">
+  <meta property="og:title" content="Portfolio — Mavi · Make Up Artist">
+  <meta property="og:description" content="Il portfolio di Mavi Make Up Artist: trucco sposa, cerimonia ed eventi.">
+  <meta property="og:image" content="https://mavimakeup.it/img/og-image.png">
+  <meta property="og:url" content="https://mavimakeup.it/portfolio.html">
 </head>
 <body>
 
@@ -24,6 +31,7 @@
           <li><a href="home.html">Home</a></li>
           <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
           <li><a href="servizi.html">Servizi</a></li>
+          <li><a href="faq.html">FAQ</a></li>
           <li><a href="chi-sono.html">Chi sono</a></li>
           <li><a href="contatti.html">Contatti</a></li>
         </ul>
@@ -98,6 +106,40 @@
     </div>
   </section>
 
+  <!-- Prima / Dopo -->
+  <section class="section section--alt">
+    <div class="container">
+      <span class="eyebrow reveal">La trasformazione</span>
+      <h2 class="section-title reveal">Prima &amp; dopo</h2>
+      <p class="lead reveal" style="margin-bottom: 2.5rem;">
+        Trascina il cursore per vedere la differenza: valorizzare, mai coprire.
+      </p>
+      <!--
+        Slider PRIMA/DOPO — per ora placeholder.
+        Con le foto vere: sostituire i due <div class="ph ..."> interni con
+        <img> (stessa inquadratura prima e dopo il trucco).
+      -->
+      <div class="split">
+        <div class="ba reveal">
+          <div class="ba-before ph ph--portrait" data-label="Prima"></div>
+          <div class="ba-after ph ph--portrait ph--3" data-label="Dopo"></div>
+          <div class="ba-divider"></div>
+          <span class="ba-tag ba-tag--before">Prima</span>
+          <span class="ba-tag ba-tag--after">Dopo</span>
+          <input type="range" min="0" max="100" value="50" aria-label="Confronta prima e dopo">
+        </div>
+        <div class="ba reveal">
+          <div class="ba-before ph ph--portrait ph--2" data-label="Prima"></div>
+          <div class="ba-after ph ph--portrait ph--4" data-label="Dopo"></div>
+          <div class="ba-divider"></div>
+          <span class="ba-tag ba-tag--before">Prima</span>
+          <span class="ba-tag ba-tag--after">Dopo</span>
+          <input type="range" min="0" max="100" value="50" aria-label="Confronta prima e dopo">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section cta-band">
     <div class="container reveal">
       <h2>Ti immagini già nel tuo giorno speciale? <em>Rendiamolo indimenticabile.</em></h2>
@@ -111,6 +153,7 @@
       <div class="footer-social">
         <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
         <a href="mailto:info@example.com">Email</a>
+        <a href="privacy.html">Privacy</a>
       </div>
     </div>
   </footer>

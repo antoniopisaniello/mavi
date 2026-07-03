@@ -9,23 +9,32 @@ Riferimento di stile: [fiammaalborghetti.com](https://fiammaalborghetti.com) —
 
 Sito **statico puro**: HTML + CSS + JS vanilla, **nessun build step**, nessuna dipendenza da installare. Si apre e si deploya così com'è (GitHub Pages, Netlify, hosting FTP classico...).
 
-Font da Google Fonts: **Cormorant Garamond** (titoli) + **Jost** (testo).
+Font **self-hosted** (GDPR-friendly, nessuna chiamata a Google): **Cormorant Garamond** (titoli) + **Jost** (testo), file woff2 in `fonts/`, dichiarazioni in `css/fonts.css`.
 
 ## Struttura
 
 ```
 ├── index.html          → pagina "in arrivo" (coming soon) + easter egg
-├── home.html           → homepage vera del sito
-├── portfolio.html      → galleria lavori con filtri (sposa/cerimonia/eventi) e lightbox
+├── home.html           → homepage: hero, intro, numeri, portfolio, testimonianze, Instagram
+├── portfolio.html      → galleria con filtri (sposa/cerimonia/eventi), lightbox, prima/dopo
 ├── servizi.html        → servizi offerti + "come funziona"
+├── faq.html            → domande frequenti (accordion)
 ├── chi-sono.html       → biografia + timeline studi/formazione
 ├── contatti.html       → contatti + form
+├── privacy.html        → informativa privacy (bozza, completare titolare)
+├── robots.txt          → ora blocca tutto; da sostituire al go-live
+├── sitemap.xml         → pronta per il go-live
+├── css/fonts.css       → @font-face dei font self-hosted
 ├── css/style.css       → unico foglio di stile (design tokens in :root)
+├── fonts/              → woff2 self-hosted (Cormorant Garamond + Jost)
 ├── js/gate.js          → protezione anteprima (da rimuovere al go-live)
 ├── js/unlock.js        → easter egg della pagina in arrivo
-├── js/main.js          → menu mobile, animazioni, filtri portfolio, lightbox
-└── img/                → foto (per ora vuota, ci sono placeholder CSS)
+├── js/main.js          → menu, animazioni, filtri, lightbox, prima/dopo, bottone WhatsApp
+└── img/                → favicon.svg, og-image.png, apple-touch-icon.png + foto (in arrivo)
 ```
+
+Il numero WhatsApp del bottone flottante è la costante `WA_NUMBER` in `js/main.js`
+(va aggiornato anche il link in `contatti.html`).
 
 ## Anteprima riservata (easter egg)
 
@@ -98,26 +107,48 @@ git config user.email "antoniopis2000@gmail.com"   # email personale per i commi
 
 ## Go-live (quando il sito sarà pronto)
 
-1. Eliminare la riga `<script src="js/gate.js"></script>` da **tutte** le pagine interne (home, portfolio, servizi, chi-sono, contatti)
+1. Eliminare la riga `<script src="js/gate.js"></script>` da **tutte** le pagine interne (home, portfolio, servizi, faq, chi-sono, contatti, privacy)
 2. Rinominare: `index.html` → `coming-soon.html` (o eliminarla) e `home.html` → `index.html`
 3. Aggiornare i link `home.html` → `index.html` (o `/`) in header/brand di tutte le pagine
 4. Rimuovere `<meta name="robots" content="noindex">` e `js/unlock.js`, `js/gate.js`
 5. Il banner "Anteprima riservata" sparisce da solo (è iniettato da `main.js` solo se `gate.js` è presente)
+6. Sostituire il contenuto di `robots.txt` con:
+   ```
+   User-agent: *
+   Allow: /
+   Sitemap: https://mavimakeup.it/sitemap.xml
+   ```
+7. Completare `privacy.html` con i dati del titolare e farla verificare
+8. Registrare/aggiornare il **Google Business Profile** di Mavi e inviare la sitemap
+   da Google Search Console
 
 ## Cose da fare / decidere
 
-- [ ] **Confermare il nome/brand**: per ora uso "Mavi" (dal nome della cartella) — da verificare
+Contenuti (servono a Mavi):
 - [ ] Testi veri: biografia, studi/formazione (timeline in `chi-sono.html` è segnaposto), numeri reali nella sezione stats della home
-- [ ] Contatti reali: email, telefono/WhatsApp, Instagram, città (segnaposto `info@example.com` / `@mavi.makeup` sparsi in tutte le pagine)
-- [ ] **Foto vere del portfolio**: mettere i file in `img/` e sostituire i `<div class="ph ...">` con `<img src="img/..." alt="..." loading="lazy">` (istruzioni nei commenti di `portfolio.html`); adattare la lightbox in `main.js` per usare le immagini vere
+- [ ] **Testimonianze vere** al posto delle 3 di esempio in `home.html` (idealmente da recensioni Google)
+- [ ] Contatti reali: email, **numero WhatsApp** (`WA_NUMBER` in `js/main.js` + link in `contatti.html`), Instagram, città (segnaposto `info@example.com` / `@mavi.makeup` sparsi ovunque)
+- [ ] **Foto vere**: portfolio (sostituire i `<div class="ph ...">` con `<img>`, istruzioni nei commenti di `portfolio.html`), coppie prima/dopo, ritratti in home e chi-sono, riquadri Instagram in home; adattare la lightbox in `main.js`
+- [ ] FAQ di `faq.html`: risposte tipiche del settore, da far validare a Mavi
+- [ ] Dati del titolare in `privacy.html`
+
+Tecnica:
 - [ ] Form contatti: ora è `mailto:` — valutare [Formspree](https://formspree.io) (gratis fino a 50 invii/mese, basta cambiare `action` del form)
-- [ ] Favicon + immagine og per condivisioni social
-- [ ] Eventuali pagine extra proposte: **recensioni/testimonianze**, **FAQ** (domande tipiche delle spose), **gift card**, versione **EN**
-- [ ] Privacy policy / cookie (i Google Fonts sono caricati da CDN: per il GDPR valutare self-hosting dei font)
-- [ ] Deploy: creare la repo GitHub, l'account FTP su SiteGround e i 3 secret (vedi sezione Deploy)
+- [ ] SEO locale quando c'è la città: aggiungerla nei title/description e nel JSON-LD in `home.html`
+- [ ] og-image attuale generata al volo: rifarla con una foto vera quando disponibile
+- [ ] Idee future: gift card, versione EN, feed Instagram automatico (es. SnapWidget/Elfsight al posto dei riquadri statici)
+
+Fatte:
+- [x] Favicon + og-image + apple-touch-icon
+- [x] Font self-hosted (GDPR)
+- [x] Privacy policy (bozza), robots.txt, sitemap.xml
+- [x] FAQ, testimonianze, prima/dopo, bottone WhatsApp, striscia Instagram
+- [x] Deploy CI su SiteGround
 
 ## Diario di lavoro
 
 - **2026-07-03** — Prima versione completa: struttura del sito (6 pagine), design system, pagina "in arrivo" con easter egg (10 tap → password), gate di anteprima, placeholder per foto e testi.
 - **2026-07-03** — Setup CI: workflow GitHub Actions per deploy FTPS su SiteGround (`.github/workflows/deploy.yml`), `.gitignore`, email personale configurata per i commit della repo. Manca solo: repo GitHub remota + account FTP + secret.
 - **2026-07-03** — Deploy attivo su `mavimakeup.it` (repo: `antoniopisaniello/mavi`). Un po' di ping-pong iniziale: primo deploy nella radice hosting (Percorso Home `/`), poi percorso duplicato (`public_html/mavimakeup.it/public_html`) perché Percorso Home e `server-dir` erano stati cambiati entrambi. Assetto finale: **Percorso Home dell'account FTP = `/mavimakeup.it/public_html`, `server-dir = ./`**. Pulizia manuale dal File Manager dei file finiti nei posti sbagliati.
+- **2026-07-03** — Fix menu mobile (burger a destra, overlay a schermo intero: il `backdrop-filter` sull'header ne faceva il containing block della nav fixed).
+- **2026-07-03** — Pacchetto migliorie: testimonianze in home (esempi), striscia Instagram, bottone WhatsApp flottante, pagina FAQ, slider prima/dopo nel portfolio, favicon + og-image + apple-touch-icon, font self-hosted (GDPR), privacy policy (bozza), robots.txt (chiuso fino al go-live) e sitemap.xml.

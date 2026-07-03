@@ -672,6 +672,162 @@ h1, h2, h3 {
   75% { transform: translateX(8px); }
 }
 
+/* ---------- Testimonianze ---------- */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+@media (max-width: 900px) { .testimonials { grid-template-columns: 1fr; } }
+.testimonial {
+  background: var(--white);
+  border: 1px solid var(--line);
+  padding: 2.4rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+}
+.testimonial::before {
+  content: "\201C";
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--accent-soft);
+}
+.testimonial p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  flex: 1;
+}
+.testimonial footer {
+  margin-top: 1.6rem;
+  font-size: .76rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Prima / Dopo ---------- */
+.ba {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  --pos: 50%;
+  touch-action: none;
+  cursor: ew-resize;
+}
+.ba .ba-before,
+.ba .ba-after { position: absolute; inset: 0; }
+.ba .ba-after { clip-path: inset(0 0 0 var(--pos)); }
+.ba .ba-divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  background: var(--white);
+  box-shadow: 0 0 12px rgba(46, 40, 37, .35);
+  pointer-events: none;
+}
+.ba .ba-divider::after {
+  content: "\2194";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+}
+.ba .ba-tag {
+  position: absolute;
+  top: .9rem;
+  font-size: .66rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  background: rgba(255, 253, 250, .85);
+  color: var(--ink);
+  padding: .3rem .7rem;
+  pointer-events: none;
+}
+.ba .ba-tag--before { left: .9rem; }
+.ba .ba-tag--after { right: .9rem; }
+.ba input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  margin: 0;
+}
+
+/* ---------- FAQ (accordion) ---------- */
+.faq-list { max-width: 760px; }
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+}
+.faq-list summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after {
+  content: "+";
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--accent);
+  transition: transform .3s var(--ease);
+  flex-shrink: 0;
+}
+.faq-list details[open] summary::after { transform: rotate(45deg); }
+.faq-list details p {
+  padding-bottom: 1.6rem;
+  color: var(--muted);
+  max-width: 42em;
+}
+
+/* ---------- Striscia Instagram ---------- */
+.ig-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 700px) { .ig-strip { grid-template-columns: repeat(2, 1fr); } }
+.ig-strip a {
+  position: relative;
+  transition: transform .4s var(--ease), opacity .4s;
+}
+.ig-strip a:hover { transform: translateY(-4px); opacity: .9; }
+
+/* ---------- Bottone WhatsApp flottante ---------- */
+.wa-float {
+  position: fixed;
+  right: 1.4rem;
+  bottom: 3.4rem; /* sopra il banner anteprima; al go-live resta comunque bene */
+  z-index: 80;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 25px -8px rgba(37, 211, 102, .6);
+  transition: transform .3s var(--ease);
+}
+.wa-float:hover { transform: scale(1.08); }
+.wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
 /* Banner anteprima (visibile solo in modalità preview) */
 .preview-banner {
   position: fixed;

@@ -1,0 +1,4 @@
+# SITO IN COSTRUZIONE: tutto bloccato ai motori di ricerca.
+# Al go-live sostituire con la versione nel README (sezione Go-live).
+User-agent: *
+Disallow: /
