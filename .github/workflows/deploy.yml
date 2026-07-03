@@ -1,0 +1,39 @@
+# Deploy automatico su SiteGround via FTPS.
+# Si attiva a ogni push su main (o manualmente dalla tab Actions).
+# Richiede 3 secret nella repo GitHub (Settings → Secrets and variables → Actions):
+#   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD — vedi README → sezione "Deploy".
+name: Deploy su SiteGround
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          # L'account FTP va creato in SiteGround con cartella "public_html",
+          # così "./" corrisponde già alla root del sito.
+          server-dir: ./
+          # Carica solo i file del sito, non quelli di sviluppo
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            .claude/**
+            README.md

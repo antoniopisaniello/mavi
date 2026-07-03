@@ -60,6 +60,41 @@ python -m http.server 8000
 
 In alternativa: estensione "Live Server" di VS Code, o `npx serve`.
 
+## Deploy automatico su SiteGround (CI)
+
+A ogni push su `main`, GitHub Actions carica il sito su SiteGround via FTPS
+(workflow: `.github/workflows/deploy.yml`, azione [SamKirkland/FTP-Deploy-Action](https://github.com/SamKirkland/FTP-Deploy-Action)).
+Vengono esclusi i file di sviluppo (`.github/`, `.claude/`, `README.md`).
+
+### Setup iniziale (da fare una sola volta)
+
+1. **Repo GitHub** — crea una repo (anche privata, es. `mavi-sito`) su [github.com/new](https://github.com/new), senza README/gitignore iniziali, poi dalla cartella del progetto:
+   ```powershell
+   git remote add origin https://github.com/<tuo-utente>/mavi-sito.git
+   git push -u origin main
+   ```
+2. **Account FTP su SiteGround** — Site Tools → **Devs → FTP Accounts Manager** → Create:
+   - nome account a scelta (es. `deploy`)
+   - **Folder: `public_html`** (importante: così il workflow carica direttamente nella root del sito)
+   - annota: hostname (mostrato da SiteGround, di solito il dominio stesso), username completo (formato `deploy@tuodominio.it`) e password
+3. **Secret su GitHub** — repo → Settings → Secrets and variables → **Actions** → New repository secret (×3):
+   | Secret | Valore |
+   |---|---|
+   | `FTP_SERVER` | hostname FTP (es. `tuodominio.it`) |
+   | `FTP_USERNAME` | utente FTP completo (es. `deploy@tuodominio.it`) |
+   | `FTP_PASSWORD` | password dell'account FTP |
+4. **Primo deploy** — push su `main` (o tab Actions → "Deploy su SiteGround" → Run workflow). Il primo giro carica tutto; i successivi sono incrementali (solo i file cambiati).
+
+Nota: finché il gate è attivo, chi visita il dominio vede la pagina "in arrivo" — perfetto per lavorare col sito già online. `noindex` evita che Google indicizzi la versione provvisoria.
+
+### Lavorare da un altro PC
+
+```powershell
+git clone https://github.com/<tuo-utente>/mavi-sito.git
+cd mavi-sito
+git config user.email "antoniopis2000@gmail.com"   # email personale per i commit
+```
+
 ## Go-live (quando il sito sarà pronto)
 
 1. Eliminare la riga `<script src="js/gate.js"></script>` da **tutte** le pagine interne (home, portfolio, servizi, chi-sono, contatti)
@@ -78,8 +113,9 @@ In alternativa: estensione "Live Server" di VS Code, o `npx serve`.
 - [ ] Favicon + immagine og per condivisioni social
 - [ ] Eventuali pagine extra proposte: **recensioni/testimonianze**, **FAQ** (domande tipiche delle spose), **gift card**, versione **EN**
 - [ ] Privacy policy / cookie (i Google Fonts sono caricati da CDN: per il GDPR valutare self-hosting dei font)
-- [ ] Deploy: collegare repo remota e hosting sul dominio della cliente
+- [ ] Deploy: creare la repo GitHub, l'account FTP su SiteGround e i 3 secret (vedi sezione Deploy)
 
 ## Diario di lavoro
 
 - **2026-07-03** — Prima versione completa: struttura del sito (6 pagine), design system, pagina "in arrivo" con easter egg (10 tap → password), gate di anteprima, placeholder per foto e testi.
+- **2026-07-03** — Setup CI: workflow GitHub Actions per deploy FTPS su SiteGround (`.github/workflows/deploy.yml`), `.gitignore`, email personale configurata per i commit della repo. Manca solo: repo GitHub remota + account FTP + secret.
