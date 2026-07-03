@@ -9,7 +9,9 @@ Riferimento di stile: [fiammaalborghetti.com](https://fiammaalborghetti.com) —
 
 Sito **statico puro**: HTML + CSS + JS vanilla, **nessun build step**, nessuna dipendenza da installare. Si apre e si deploya così com'è (GitHub Pages, Netlify, hosting FTP classico...).
 
-Font **self-hosted** (GDPR-friendly, nessuna chiamata a Google): **Cormorant Garamond** (titoli) + **Jost** (testo), file woff2 in `fonts/`, dichiarazioni in `css/fonts.css`.
+Font **ufficiali del brand, self-hosted** (GDPR-friendly, licenza della cliente): **Nord** (titoli), **Sofia Pro** (testi), **Ginger** (accenti grafici) — file woff2 in `fonts/`, dichiarazioni in `css/fonts.css`. Loghi ufficiali MaVi Beauty in `img/` (ricolorati con la palette del sito).
+
+⚠️ La cartella **`MAVI - Daniela/`** (brand kit sorgente: loghi, brand manual, font desktop) è **esclusa da git** (`.gitignore`): contiene font commerciali che non vanno pubblicati. Vive solo in locale — per averla su un altro PC va copiata a mano (drive/USB).
 
 ## Struttura
 
@@ -152,3 +154,4 @@ Fatte:
 - **2026-07-03** — Deploy attivo su `mavimakeup.it` (repo: `antoniopisaniello/mavi`). Un po' di ping-pong iniziale: primo deploy nella radice hosting (Percorso Home `/`), poi percorso duplicato (`public_html/mavimakeup.it/public_html`) perché Percorso Home e `server-dir` erano stati cambiati entrambi. Assetto finale: **Percorso Home dell'account FTP = `/mavimakeup.it/public_html`, `server-dir = ./`**. Pulizia manuale dal File Manager dei file finiti nei posti sbagliati.
 - **2026-07-03** — Fix menu mobile (burger a destra, overlay a schermo intero: il `backdrop-filter` sull'header ne faceva il containing block della nav fixed).
 - **2026-07-03** — Pacchetto migliorie: testimonianze in home (esempi), striscia Instagram, bottone WhatsApp flottante, pagina FAQ, slider prima/dopo nel portfolio, favicon + og-image + apple-touch-icon, font self-hosted (GDPR), privacy policy (bozza), robots.txt (chiuso fino al go-live) e sitemap.xml.
+- **2026-07-03** — Restyling col brand ufficiale (kit in `MAVI - Daniela/`, solo locale): font Nord/Sofia Pro/Ginger al posto di Cormorant/Jost, logo MaVi Beauty nell'header e nella pagina "in arrivo" (resta il bersaglio dell'easter egg), monogramma AV come favicon, og-image e apple-touch-icon rigenerate col logo vero. Colori e stile invariati su indicazione della cliente.
