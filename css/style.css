@@ -573,8 +573,8 @@ h1, h2, h3 {
 .coming-inner { max-width: 34em; }
 
 .monogram {
-  width: min(230px, 58vw);
-  margin: 0 auto 1.6rem;
+  width: 92px;
+  margin: 0 auto 2rem;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -582,7 +582,13 @@ h1, h2, h3 {
   transition: transform .2s var(--ease);
 }
 .monogram img { width: 100%; display: block; }
-.monogram:active { transform: scale(.96); }
+.monogram:active { transform: scale(.94); }
+
+.coming-logo {
+  width: min(230px, 58vw);
+  margin: 0 auto;
+}
+.coming-logo img { width: 100%; display: block; }
 
 /* Testo solo per screen reader (il logo è l'elemento visivo) */
 .sr-only {
