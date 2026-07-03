@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mavi · Make Up Artist — In arrivo</title>
+  <meta name="description" content="Mavi Make Up Artist — specializzata in trucco sposa. Il nuovo sito è in arrivo.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="coming">
+    <div class="coming-inner">
+      <!-- Easter egg: 10 tap qui sopra aprono la modale password -->
+      <div class="monogram" id="monogram" aria-hidden="true">M</div>
+
+      <h1>Ma<span>vi</span></h1>
+      <p class="tagline">Make Up Artist · Sposa</p>
+
+      <div class="divider"></div>
+
+      <p class="note">
+        Qualcosa di bello sta per arrivare.<br>
+        Il nuovo sito è quasi pronto.
+      </p>
+
+      <div class="socials">
+        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:info@example.com">Email</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modale password (easter egg) -->
+  <div class="pwd-modal" id="pwd-modal" role="dialog" aria-modal="true" aria-labelledby="pwd-title">
+    <div class="pwd-box" id="pwd-box">
+      <h2 id="pwd-title">Anteprima riservata</h2>
+      <p>Inserisci la password per vedere il sito</p>
+      <form id="pwd-form">
+        <input type="password" id="pwd-input" autocomplete="off" aria-label="Password">
+        <button type="submit" class="btn">Entra</button>
+      </form>
+      <div class="pwd-error" id="pwd-error"></div>
+    </div>
+  </div>
+
+  <script src="js/unlock.js"></script>
+</body>
+</html>

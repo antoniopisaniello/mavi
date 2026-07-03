@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti — Mavi · Make Up Artist</title>
+  <meta name="description" content="Contatta Mavi Make Up Artist per informazioni e preventivi: trucco sposa, cerimonia ed eventi.">
+  <script src="js/gate.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="home.html">Ma<span>vi</span></a>
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="servizi.html">Servizi</a></li>
+          <li><a href="chi-sono.html">Chi sono</a></li>
+          <li><a href="contatti.html" aria-current="page">Contatti</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top: 9rem;">
+    <div class="container split" style="align-items: start;">
+      <div class="reveal">
+        <span class="eyebrow">Contatti</span>
+        <h1 class="section-title">Raccontami il tuo giorno speciale</h1>
+        <p class="lead" style="margin-bottom: 2.5rem;">
+          Scrivimi per informazioni o un preventivo senza impegno.
+          Rispondo di solito entro 24 ore.
+        </p>
+
+        <!-- CONTATTI: dati segnaposto, da sostituire con quelli reali -->
+        <div class="contact-list">
+          <div>
+            <span class="label">Email</span>
+            <a class="value" href="mailto:info@example.com">info@example.com</a>
+          </div>
+          <div>
+            <span class="label">WhatsApp</span>
+            <a class="value" href="https://wa.me/390000000000" target="_blank" rel="noopener">+39 000 000 0000</a>
+          </div>
+          <div>
+            <span class="label">Instagram</span>
+            <a class="value" href="https://instagram.com/" target="_blank" rel="noopener">@mavi.makeup</a>
+          </div>
+          <div>
+            <span class="label">Zona di lavoro</span>
+            <span class="value">Base a [città] · disponibile in tutta Italia</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <!--
+          FORM: per ora apre il client di posta (mailto).
+          Per un invio vero senza backend: Formspree o simili — vedi README.
+        -->
+        <form class="contact-form" action="mailto:info@example.com" method="get" enctype="text/plain">
+          <div>
+            <label for="f-name">Nome</label>
+            <input type="text" id="f-name" name="nome" required>
+          </div>
+          <div>
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" required>
+          </div>
+          <div>
+            <label for="f-date">Data dell'evento</label>
+            <input type="text" id="f-date" name="data" placeholder="es. 12 giugno 2027">
+          </div>
+          <div>
+            <label for="f-msg">Messaggio</label>
+            <textarea id="f-msg" name="messaggio" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Invia</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 Mavi · Make Up Artist</span>
+      <div class="footer-social">
+        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:info@example.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
