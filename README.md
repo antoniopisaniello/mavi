@@ -130,7 +130,7 @@ Contenuti (servono a Mavi):
 - [ ] Testi veri: biografia, studi/formazione (timeline in `chi-sono.html` è segnaposto), numeri reali nella sezione stats della home
 - [ ] **Testimonianze vere** al posto delle 3 di esempio in `home.html` (idealmente da recensioni Google)
 - [x] Contatti reali inseriti ovunque: `info@mavimakeup.it`, WhatsApp +39 349 418 8497 (`WA_NUMBER` in `js/main.js`), Instagram [@mavibeauty_mua](https://instagram.com/mavibeauty_mua)
-- [ ] Manca ancora la **città** (in `contatti.html`: "Base a [città]") e i dati del titolare in `privacy.html`
+- [x] Città (Pedrengo, BG) in contatti + JSON-LD, titolare (Daniela Marro) in privacy; "Chi sono" si presenta come Daniela
 - [ ] **Foto vere**: portfolio (sostituire i `<div class="ph ...">` con `<img>`, istruzioni nei commenti di `portfolio.html`), coppie prima/dopo, ritratti in home e chi-sono, riquadri Instagram in home; adattare la lightbox in `main.js`
 - [ ] FAQ di `faq.html`: risposte tipiche del settore, da far validare a Mavi
 - [ ] Dati del titolare in `privacy.html`
