@@ -100,10 +100,19 @@ h1, h2, h3 {
   top: 0;
   z-index: 50;
   padding-block: 1.1rem;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color .4s;
+}
+/* Sfondo sfumato su pseudo-elemento: backdrop-filter direttamente
+   sull'header ne farebbe il containing block della .nav-list fixed,
+   confinando il menu mobile alla striscia dell'header. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
 }
 .site-header.is-scrolled { border-bottom-color: var(--line); }
 
@@ -172,7 +181,9 @@ h1, h2, h3 {
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 @media (max-width: 760px) {
-  .nav-toggle { display: block; }
+  /* La .nav-list è fixed: la <nav> in flusso ha larghezza zero e con
+     space-between il burger finirebbe centrato — lo spingiamo a destra. */
+  .nav-toggle { display: block; order: 2; }
   .nav-list {
     position: fixed;
     inset: 0;
