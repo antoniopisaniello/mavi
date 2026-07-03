@@ -74,10 +74,10 @@ Vengono esclusi i file di sviluppo (`.github/`, `.claude/`, `README.md`).
    git push -u origin main
    ```
 2. **Account FTP su SiteGround** — Site Tools → **Devs → FTP Accounts Manager** → Create.
-   L'account attuale è `deploy@mavimakeup.it` con Percorso Home `/` (radice hosting):
-   per questo il workflow carica in `server-dir: ./mavimakeup.it/public_html/`.
-   Se in futuro l'account FTP venisse ricreato con home direttamente su `public_html`,
-   riportare `server-dir` a `./` in `.github/workflows/deploy.yml`.
+   L'account attuale è `deploy@mavimakeup.it` con **Percorso Home `/mavimakeup.it/public_html`**
+   (la root del sito): il workflow carica quindi in `server-dir: ./`.
+   ⚠️ Se il Percorso Home dell'account cambia, va adeguato `server-dir`
+   in `.github/workflows/deploy.yml` — le due cose si sommano.
 3. **Secret su GitHub** — repo → Settings → Secrets and variables → **Actions** → New repository secret (×3):
    | Secret | Valore |
    |---|---|
@@ -120,4 +120,4 @@ git config user.email "antoniopis2000@gmail.com"   # email personale per i commi
 
 - **2026-07-03** — Prima versione completa: struttura del sito (6 pagine), design system, pagina "in arrivo" con easter egg (10 tap → password), gate di anteprima, placeholder per foto e testi.
 - **2026-07-03** — Setup CI: workflow GitHub Actions per deploy FTPS su SiteGround (`.github/workflows/deploy.yml`), `.gitignore`, email personale configurata per i commit della repo. Manca solo: repo GitHub remota + account FTP + secret.
-- **2026-07-03** — Deploy attivo su `mavimakeup.it` (repo: `antoniopisaniello/mavi`). Primo deploy finito nella radice hosting per via del Percorso Home `/` dell'account FTP: corretto `server-dir` a `./mavimakeup.it/public_html/`; i file caricati per errore in radice vanno rimossi a mano dal File Manager.
+- **2026-07-03** — Deploy attivo su `mavimakeup.it` (repo: `antoniopisaniello/mavi`). Un po' di ping-pong iniziale: primo deploy nella radice hosting (Percorso Home `/`), poi percorso duplicato (`public_html/mavimakeup.it/public_html`) perché Percorso Home e `server-dir` erano stati cambiati entrambi. Assetto finale: **Percorso Home dell'account FTP = `/mavimakeup.it/public_html`, `server-dir = ./`**. Pulizia manuale dal File Manager dei file finiti nei posti sbagliati.
