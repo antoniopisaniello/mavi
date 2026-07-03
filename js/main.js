@@ -102,7 +102,7 @@
 
   /* ----- Bottone WhatsApp flottante ----- */
   // Numero unico per tutto il sito: cambiarlo qui e in contatti.html
-  var WA_NUMBER = "390000000000";
+  var WA_NUMBER = "393494188497";
   var wa = document.createElement("a");
   wa.className = "wa-float";
   wa.href = "https://wa.me/" + WA_NUMBER;
